@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>MySQL基础命令</title>
+      <link href="/2018/11/21/MySQL%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
+      <url>/2018/11/21/MySQL%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>在终端下执行的每条指令必须以’；’结尾</p><p>进入数据库：<br>./mysql -u root(用户名) -p(密码登录)</p><p>显示所有数据库：<br>show databases;</p><p>创建一个数据库：<br>create database +database name;</p><p>删除一个数据库：<br>drop database +database name;</p><p>进入一个数据库：<br>use +database name;</p><p>显示所有数据表：<br>show tables;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>我的第一篇博客</title>
       <link href="/2018/11/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
       <url>/2018/11/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
