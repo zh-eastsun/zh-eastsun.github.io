@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>实现圆角Button</title>
+      <link href="/2018/11/21/%E5%AE%9E%E7%8E%B0%E5%9C%86%E8%A7%92Button/"/>
+      <url>/2018/11/21/%E5%AE%9E%E7%8E%B0%E5%9C%86%E8%A7%92Button/</url>
+      
+        <content type="html"><![CDATA[<p>在drawable文件夹下建立xml文件</p><p>根元素为shape -&gt; 指定背景填充色(标签solid) -&gt; 设置圆角弧度(标签corners,属性radius)</p><p>设置button的background属性为@drawable/xxxx</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android开发实用解决方案 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android控件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>初识Django</title>
       <link href="/2018/11/21/%E5%88%9D%E8%AF%86Django/"/>
       <url>/2018/11/21/%E5%88%9D%E8%AF%86Django/</url>
