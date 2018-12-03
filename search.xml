@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>python3 requests库保持连接cookie</title>
+      <link href="/2018/12/03/python3-requests%E5%BA%93%E4%BF%9D%E6%8C%81%E8%BF%9E%E6%8E%A5cookie/"/>
+      <url>/2018/12/03/python3-requests%E5%BA%93%E4%BF%9D%E6%8C%81%E8%BF%9E%E6%8E%A5cookie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="requests库保持连接cookie"><a href="#requests库保持连接cookie" class="headerlink" title="requests库保持连接cookie"></a>requests库保持连接cookie</h1><h2 id="requests库的使用方式"><a href="#requests库的使用方式" class="headerlink" title="requests库的使用方式"></a>requests库的使用方式</h2><ul><li>requests库发起网络请求的方式：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;http://域名&quot;</span><br><span class="line">header = &#123;key:value&#125;</span><br><span class="line">body = &#123;body&#125;</span><br><span class="line"># 发起get请求</span><br><span class="line">response = requests.get(url,header)</span><br><span class="line"># 发起post请求</span><br><span class="line">response = requests.post(url,header,body)</span><br></pre></td></tr></table></figure><h2 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h2><ul><li>在使用requests库发起网络请求时如果请求头中要求携带请求的cookie，那么一般的写法如下：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header = &#123;&apos;cookie&apos;:cookie&#125;</span><br></pre></td></tr></table></figure><blockquote><p>如上方式将cookie加进请求头中，但是当请求的资源返回302，也就是发生重定向时跳转的页面时无法获取我们添加的cookie的，从而导致跳转后的请求过期，如果是登陆系统那么则会自动登出账号，虽然我们发起登陆请求时确实通过了服务器验证，但是由于跳转之后没有cookie那么服务端会认为此次请求已经过期。</p></blockquote><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul><li>想让重定向请求携带上一次请求的cookie则应如下修改代码</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = url</span><br><span class="line">header = &#123;key:value&#125;</span><br><span class="line">body = &#123;key:value&#125;</span><br><span class="line">cookie = &#123;&apos;cookie&apos;:cookie&#125;</span><br><span class="line"></span><br><span class="line"># 发起post请求通过服务器验证</span><br><span class="line">response = requests.post(url,header,body,cookie=cookie)</span><br></pre></td></tr></table></figure><blockquote><p>如上代码将cookie单独构建并添加进方法内，这样重定向后的请求会获取我们登陆时的cookie<br>保证重定向后的请求不会失效。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> requests库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>使用nginx部署django项目</title>
       <link href="/2018/12/01/%E4%BD%BF%E7%94%A8nginx%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/"/>
       <url>/2018/12/01/%E4%BD%BF%E7%94%A8nginx%E9%83%A8%E7%BD%B2django%E9%A1%B9%E7%9B%AE/</url>
