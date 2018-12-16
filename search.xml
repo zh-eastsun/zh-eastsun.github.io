@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>python3爬虫(requests+bs4)</title>
+      <link href="/2018/12/17/python3%E7%88%AC%E8%99%AB-requests-bs4/"/>
+      <url>/2018/12/17/python3%E7%88%AC%E8%99%AB-requests-bs4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="python3-使用requests-bs4编写爬虫"><a href="#python3-使用requests-bs4编写爬虫" class="headerlink" title="python3:使用requests+bs4编写爬虫"></a>python3:使用requests+bs4编写爬虫</h1><h2 id="requests框架"><a href="#requests框架" class="headerlink" title="requests框架"></a>requests框架</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(requests.__version__)</span><br></pre></td></tr></table></figure><blockquote><p>版本很重要，因为有些低版本的requests在进行https请求时无法禁用ssl验证，在请求https网站的时候会报错</p></blockquote><h3 id="更新requests"><a href="#更新requests" class="headerlink" title="更新requests"></a>更新requests</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip --upgrade requests</span><br></pre></td></tr></table></figure><h3 id="发起请求并获取结果"><a href="#发起请求并获取结果" class="headerlink" title="发起请求并获取结果"></a>发起请求并获取结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;http://www.baidu.com&quot;</span><br><span class="line"># 发起get请求</span><br><span class="line">response = requests.get(url)</span><br><span class="line"># 发起post请求</span><br><span class="line">response = requests.post(url)</span><br><span class="line"># 发起XXX请求</span><br><span class="line">response = requests.XXX(url)</span><br><span class="line"></span><br><span class="line">print(response.text)</span><br></pre></td></tr></table></figure><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>响应结果编码格式的问题</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># requests框架会自动解析response并自动设置解码方式，可以通过如下代码查看解码方式</span><br><span class="line">print(response.encoding)</span><br><span class="line"># 但是其自动解析的结果并不一定是正确的，如果使用bs4框架解析html产生乱码，那么可能是编码格式出现了错误</span><br><span class="line"># 这时我们可以自己查看html的信息看其具体的编码格式然后手动设置，如下代码：</span><br><span class="line">requests.encoding = &apos;utf-8&apos;</span><br><span class="line"># 当然此处设置的解码方式要和bs4使用的解码方式一致（bs4的解码方式请看bs4框架）</span><br></pre></td></tr></table></figure><h2 id="bs4框架"><a href="#bs4框架" class="headerlink" title="bs4框架"></a>bs4框架</h2><h3 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure><h3 id="设置解析器"><a href="#设置解析器" class="headerlink" title="设置解析器"></a>设置解析器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 此处的parser就是我们指定的解析器，bs4支持多种解析器，根据不同的需求会指定不同的解析器</span><br><span class="line"># 关于解析器的内容可以查看中文官方文档</span><br><span class="line">soup = bs4.BeautifulSoup(markup=response,features=&apos;parser&apos;)</span><br></pre></td></tr></table></figure><h3 id="解析某一元素"><a href="#解析某一元素" class="headerlink" title="解析某一元素"></a>解析某一元素</h3><ul><li>解析title</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(soup.title)</span><br></pre></td></tr></table></figure><h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ul><li>编码格式的问题</li></ul><p>在使用bs4框架进行解析时框架默认解析格式是‘utf-8’，如果原文档的编码格式不是utf-8那么将出现乱码，所以在使用时一定要注意使用bs4时解码的格式要和requests解码的格式保持一致，否则将出现乱码。</p><h3 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> python3 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python3爬虫 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>python3 requests库保持连接cookie</title>
       <link href="/2018/12/03/python3-requests%E5%BA%93%E4%BF%9D%E6%8C%81%E8%BF%9E%E6%8E%A5cookie/"/>
       <url>/2018/12/03/python3-requests%E5%BA%93%E4%BF%9D%E6%8C%81%E8%BF%9E%E6%8E%A5cookie/</url>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="均值处理算法,">
+  <meta name="keywords" content="python3爬虫,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="计算机图像处理算法-均值算法-Java实现">
-<meta name="keywords" content="均值处理算法">
+<meta name="description" content="使用requests+bs4框架编写网络爬虫">
+<meta name="keywords" content="python3爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图像处理均值算法">
-<meta property="og:url" content="http://yoursite.com/2018/11/22/图像处理均值算法/index.html">
+<meta property="og:title" content="python3爬虫(requests+bs4)">
+<meta property="og:url" content="http://yoursite.com/2018/12/17/python3爬虫-requests-bs4/index.html">
 <meta property="og:site_name" content="EastSun的博客">
-<meta property="og:description" content="计算机图像处理算法-均值算法-Java实现">
+<meta property="og:description" content="使用requests+bs4框架编写网络爬虫">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-22T16:21:04.769Z">
+<meta property="og:updated_time" content="2018-12-16T16:52:06.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图像处理均值算法">
-<meta name="twitter:description" content="计算机图像处理算法-均值算法-Java实现">
+<meta name="twitter:title" content="python3爬虫(requests+bs4)">
+<meta name="twitter:description" content="使用requests+bs4框架编写网络爬虫">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/22/图像处理均值算法/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/17/python3爬虫-requests-bs4/">
 
 
 
 
 
-  <title>图像处理均值算法 | EastSun的博客</title>
+  <title>python3爬虫(requests+bs4) | EastSun的博客</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/图像处理均值算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/python3爬虫-requests-bs4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zh_EastSun">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">图像处理均值算法</h1>
+          <h1 class="post-title" itemprop="name headline">python3爬虫(requests+bs4)</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T23:47:50+08:00">
-                2018-11-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T00:24:06+08:00">
+                2018-12-17
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机图形处理/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机图形处理</span>
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
                   </a>
                 </span>
 
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  270 字
+                  458 字
                 </span>
               
 
@@ -370,7 +370,7 @@
 
           
               <div class="post-description">
-                  计算机图像处理算法-均值算法-Java实现
+                  使用requests+bs4框架编写网络爬虫
               </div>
           
 
@@ -387,21 +387,28 @@
       
 
       
-        <h1 id="均值处理算法"><a href="#均值处理算法" class="headerlink" title="均值处理算法"></a>均值处理算法</h1><ul>
-<li><p>算法思想：</p>
+        <h1 id="python3-使用requests-bs4编写爬虫"><a href="#python3-使用requests-bs4编写爬虫" class="headerlink" title="python3:使用requests+bs4编写爬虫"></a>python3:使用requests+bs4编写爬虫</h1><h2 id="requests框架"><a href="#requests框架" class="headerlink" title="requests框架"></a>requests框架</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(requests.__version__)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>计算待处理像素的周围元素的均值来代替待处理像素</p>
+<p>版本很重要，因为有些低版本的requests在进行https请求时无法禁用ssl验证，在请求https网站的时候会报错</p>
 </blockquote>
-</li>
-<li><p>数学表达式：</p>
-<blockquote>
-<p>image[i][j] = (imgae[i-1][j-1] + image[i][j-1] + image[i+1][j-1] +<br>image[i-1][j] + image[i+1][j] +<br>image[i-1][j+1] + image[i][j+1] + image[i+1][j+1])/8</p>
-</blockquote>
-</li>
-<li><p>代码实现：</p>
-</li>
+<h3 id="更新requests"><a href="#更新requests" class="headerlink" title="更新requests"></a>更新requests</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip --upgrade requests</span><br></pre></td></tr></table></figure>
+<h3 id="发起请求并获取结果"><a href="#发起请求并获取结果" class="headerlink" title="发起请求并获取结果"></a>发起请求并获取结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;http://www.baidu.com&quot;</span><br><span class="line"># 发起get请求</span><br><span class="line">response = requests.get(url)</span><br><span class="line"># 发起post请求</span><br><span class="line">response = requests.post(url)</span><br><span class="line"># 发起XXX请求</span><br><span class="line">response = requests.XXX(url)</span><br><span class="line"></span><br><span class="line">print(response.text)</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>响应结果编码格式的问题</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">private static int meanfilter(int[][] image) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Scanner sc = new Scanner(System.in);</span><br><span class="line">            System.out.println(&quot;请输入图片的m，n:&quot;);</span><br><span class="line">            int m = sc.nextInt();</span><br><span class="line">            int n = sc.nextInt();</span><br><span class="line">            image = new int[m][n];</span><br><span class="line">            newImage = new int[m][n];</span><br><span class="line">            for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">                for (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">                    image[i][j] = sc.nextInt();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;原图片的数值为：&quot;);</span><br><span class="line">            System.out.println(Arrays.deepToString(image));</span><br><span class="line">            for (int i = 1; i &lt; m - 1; i++) &#123;</span><br><span class="line">                for (int j = 1; j &lt; n - 1; j++) &#123;</span><br><span class="line">                    newImage[i][j] = (image[i - 1][j - 1] + image[i][j - 1] + image[i + 1][j - 1] + image[i - 1][j] + image[i + 1][j] +</span><br><span class="line">                            image[i - 1][j + 1] + image[i][j + 1] + image[i + 1][j + 1]) / 8;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;经过均值滤波后的图片数值为：&quot;);</span><br><span class="line">            System.out.println(Arrays.deepToString(newImage));</span><br><span class="line">            return 0;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># requests框架会自动解析response并自动设置解码方式，可以通过如下代码查看解码方式</span><br><span class="line">print(response.encoding)</span><br><span class="line"># 但是其自动解析的结果并不一定是正确的，如果使用bs4框架解析html产生乱码，那么可能是编码格式出现了错误</span><br><span class="line"># 这时我们可以自己查看html的信息看其具体的编码格式然后手动设置，如下代码：</span><br><span class="line">requests.encoding = &apos;utf-8&apos;</span><br><span class="line"># 当然此处设置的解码方式要和bs4使用的解码方式一致（bs4的解码方式请看bs4框架）</span><br></pre></td></tr></table></figure>
+<h2 id="bs4框架"><a href="#bs4框架" class="headerlink" title="bs4框架"></a>bs4框架</h2><h3 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+<h3 id="设置解析器"><a href="#设置解析器" class="headerlink" title="设置解析器"></a>设置解析器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 此处的parser就是我们指定的解析器，bs4支持多种解析器，根据不同的需求会指定不同的解析器</span><br><span class="line"># 关于解析器的内容可以查看中文官方文档</span><br><span class="line">soup = bs4.BeautifulSoup(markup=response,features=&apos;parser&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="解析某一元素"><a href="#解析某一元素" class="headerlink" title="解析某一元素"></a>解析某一元素</h3><ul>
+<li>解析title</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(soup.title)</span><br></pre></td></tr></table></figure>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>编码格式的问题</li>
+</ul>
+<p>在使用bs4框架进行解析时框架默认解析格式是‘utf-8’，如果原文档的编码格式不是utf-8那么将出现乱码，所以在使用时一定要注意使用bs4时解码的格式要和requests解码的格式保持一致，否则将出现乱码。</p>
+<h3 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h3>
       
     </div>
     
@@ -418,7 +425,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/均值处理算法/" rel="tag"># 均值处理算法</a>
+            <a href="/tags/python3爬虫/" rel="tag"># python3爬虫</a>
           
         </div>
       
@@ -431,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/21/Android如何测试网络连通性/" rel="next" title="Android如何测试网络连通性">
-                <i class="fa fa-chevron-left"></i> Android如何测试网络连通性
+              <a href="/2018/12/03/python3-requests库保持连接cookie/" rel="next" title="python3 requests库保持连接cookie">
+                <i class="fa fa-chevron-left"></i> python3 requests库保持连接cookie
               </a>
             
           </div>
@@ -440,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/22/图像处理中值算法/" rel="prev" title="图像处理中值算法">
-                图像处理中值算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -577,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#均值处理算法"><span class="nav-number">1.</span> <span class="nav-text">均值处理算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python3-使用requests-bs4编写爬虫"><span class="nav-number">1.</span> <span class="nav-text">python3:使用requests+bs4编写爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#requests框架"><span class="nav-number">1.1.</span> <span class="nav-text">requests框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本"><span class="nav-number">1.1.2.</span> <span class="nav-text">查看版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新requests"><span class="nav-number">1.1.3.</span> <span class="nav-text">更新requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发起请求并获取结果"><span class="nav-number">1.1.4.</span> <span class="nav-text">发起请求并获取结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.1.5.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bs4框架"><span class="nav-number">1.2.</span> <span class="nav-text">bs4框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置解析器"><span class="nav-number">1.2.2.</span> <span class="nav-text">设置解析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析某一元素"><span class="nav-number">1.2.3.</span> <span class="nav-text">解析某一元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未完待续"><span class="nav-number">1.2.5.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
