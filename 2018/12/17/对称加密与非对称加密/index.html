@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="requests库,">
+  <meta name="keywords" content="加密算法,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="如何保持http请求时的cookie">
-<meta name="keywords" content="requests库">
+<meta name="description" content="对称加密算法与非对称加密算法分析">
+<meta name="keywords" content="加密算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python3 requests库保持连接cookie">
-<meta property="og:url" content="http://yoursite.com/2018/12/03/python3-requests库保持连接cookie/index.html">
+<meta property="og:title" content="对称加密与非对称加密">
+<meta property="og:url" content="http://yoursite.com/2018/12/17/对称加密与非对称加密/index.html">
 <meta property="og:site_name" content="EastSun的博客">
-<meta property="og:description" content="如何保持http请求时的cookie">
+<meta property="og:description" content="对称加密算法与非对称加密算法分析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T02:32:41.109Z">
+<meta property="og:updated_time" content="2018-12-17T06:10:21.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python3 requests库保持连接cookie">
-<meta name="twitter:description" content="如何保持http请求时的cookie">
+<meta name="twitter:title" content="对称加密与非对称加密">
+<meta name="twitter:description" content="对称加密算法与非对称加密算法分析">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/03/python3-requests库保持连接cookie/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/17/对称加密与非对称加密/">
 
 
 
 
 
-  <title>python3 requests库保持连接cookie | EastSun的博客</title>
+  <title>对称加密与非对称加密 | EastSun的博客</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/python3-requests库保持连接cookie/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/对称加密与非对称加密/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zh_EastSun">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python3 requests库保持连接cookie</h1>
+          <h1 class="post-title" itemprop="name headline">对称加密与非对称加密</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T10:17:26+08:00">
-                2018-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T13:46:02+08:00">
+                2018-12-17
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
                   </a>
                 </span>
 
@@ -346,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  344 字
+                  651 字
                 </span>
               
 
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -370,7 +370,7 @@
 
           
               <div class="post-description">
-                  如何保持http请求时的cookie
+                  对称加密算法与非对称加密算法分析
               </div>
           
 
@@ -387,24 +387,45 @@
       
 
       
-        <h1 id="requests库保持连接cookie"><a href="#requests库保持连接cookie" class="headerlink" title="requests库保持连接cookie"></a>requests库保持连接cookie</h1><h2 id="requests库的使用方式"><a href="#requests库的使用方式" class="headerlink" title="requests库的使用方式"></a>requests库的使用方式</h2><ul>
-<li>requests库发起网络请求的方式：</li>
+        <h1 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li>对称加密算法使用同一个密钥进行加密与解密，也就是用于加密信息的密钥同时可以用于解密。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;http://域名&quot;</span><br><span class="line">header = &#123;key:value&#125;</span><br><span class="line">body = &#123;body&#125;</span><br><span class="line"># 发起get请求</span><br><span class="line">response = requests.get(url,header)</span><br><span class="line"># 发起post请求</span><br><span class="line">response = requests.post(url,header,body)</span><br></pre></td></tr></table></figure>
-<h2 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h2><ul>
-<li>在使用requests库发起网络请求时如果请求头中要求携带请求的cookie，那么一般的写法如下：</li>
+<h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><ul>
+<li>A:我要传送一个加密的文本给你，这个是用于解密的密钥。</li>
+<li>B:我收到了信息和密钥，我用密钥成功解密了数据。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header = &#123;&apos;cookie&apos;:cookie&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="优缺点分析"><a href="#优缺点分析" class="headerlink" title="优缺点分析"></a>优缺点分析</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>可以看到加密解密的过程很简单，所以算法复杂度低，加解密速度快。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>信息的可靠性不依赖算法，依赖于密钥的可靠性，那么密钥的可靠传输又是一大问题。</li>
+<li>一旦无法保证密钥的可靠传输那么信息的可靠性将得不到保证。</li>
+</ul>
+<h2 id="典型算法"><a href="#典型算法" class="headerlink" title="典型算法"></a>典型算法</h2><ul>
+<li>DES</li>
+<li>直接对数据进行与或运算</li>
+</ul>
+<p><br><br></p>
+<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><h2 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h2><ul>
+<li>通信的双方持有各自的公钥和私钥，公钥用于加密数据，私钥用于解密数据，公钥可以对外公开，私钥必须自己妥善保存，在通信时，发送方将公钥与数据发送给接收方，接收方接收到数据后将自己的公钥和经过发送方公钥加密过的数据发送给发送方，发送方接收到接收方发送过来的信息后用自己的私钥对数据进行解密，此时通信双方互相持有对方的公钥，则可以加密发送的数据并保证对方可以正确解密。</li>
+</ul>
+<h2 id="过程分析-1"><a href="#过程分析-1" class="headerlink" title="过程分析"></a>过程分析</h2><ul>
+<li>A(public keyA,private keyA):我发送了一份数据，这里面有我的公钥，你可以使用这个公钥对数据进行加密。</li>
+<li>B(public keyB,peivate keyB,public keyA):我收到了数据，我发送了一份使用公钥A加密的数据，这里面有我的公钥，你可以使用这个公钥对数据进行加密。</li>
+<li>A(public keyA,private keyA,public keyB):我收到了数据并成功用私钥解密了，我也收到了你的公钥。</li>
+</ul>
 <blockquote>
-<p>如上方式将cookie加进请求头中，但是当请求的资源返回302，也就是发生重定向时跳转的页面时无法获取我们添加的cookie的，从而导致跳转后的请求过期，如果是登陆系统那么则会自动登出账号，虽然我们发起登陆请求时确实通过了服务器验证，但是由于跳转之后没有cookie那么服务端会认为此次请求已经过期。</p>
+<p>此时通信双方互相持有对方的公钥，可以传输加密后的数据，并且各自持有解密的私钥，该私钥不用传输，所以只要本地环境是安全的，那么信息就是安全的。</p>
 </blockquote>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
-<li>想让重定向请求携带上一次请求的cookie则应如下修改代码</li>
+<h2 id="优缺点分析-1"><a href="#优缺点分析-1" class="headerlink" title="优缺点分析"></a>优缺点分析</h2><h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>无需将解密的密钥进行传输，保证了数据的相对安全。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = url</span><br><span class="line">header = &#123;key:value&#125;</span><br><span class="line">body = &#123;key:value&#125;</span><br><span class="line">cookie = &#123;&apos;cookie&apos;:cookie&#125;</span><br><span class="line"></span><br><span class="line"># 发起post请求通过服务器验证</span><br><span class="line">response = requests.post(url,header,body,cookie=cookie)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如上代码将cookie单独构建并添加进方法内，这样重定向后的请求会获取我们登陆时的cookie<br>保证重定向后的请求不会失效。</p>
-</blockquote>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>可靠性依赖于算法，并且非对称加密算法一般复杂度比较高，所以加密解密速度相对较慢。</li>
+</ul>
+<h3 id="典型的算法"><a href="#典型的算法" class="headerlink" title="典型的算法"></a>典型的算法</h3><ul>
+<li>RSA</li>
+</ul>
 
       
     </div>
@@ -422,7 +443,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/requests库/" rel="tag"># requests库</a>
+            <a href="/tags/加密算法/" rel="tag"># 加密算法</a>
           
         </div>
       
@@ -435,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/01/使用nginx部署django项目/" rel="next" title="使用nginx部署django项目">
-                <i class="fa fa-chevron-left"></i> 使用nginx部署django项目
+              <a href="/2018/12/17/python3爬虫-requests-bs4/" rel="next" title="python3爬虫(requests+bs4)">
+                <i class="fa fa-chevron-left"></i> python3爬虫(requests+bs4)
               </a>
             
           </div>
@@ -444,10 +465,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/17/python3爬虫-requests-bs4/" rel="prev" title="python3爬虫(requests+bs4)">
-                python3爬虫(requests+bs4) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#requests库保持连接cookie"><span class="nav-number">1.</span> <span class="nav-text">requests库保持连接cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#requests库的使用方式"><span class="nav-number">1.1.</span> <span class="nav-text">requests库的使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题简述"><span class="nav-number">1.2.</span> <span class="nav-text">问题简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">1.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程分析"><span class="nav-number">1.2.</span> <span class="nav-text">过程分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点分析"><span class="nav-number">1.3.</span> <span class="nav-text">优缺点分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型算法"><span class="nav-number">1.4.</span> <span class="nav-text">典型算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密"><span class="nav-number">2.</span> <span class="nav-text">非对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理-1"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程分析-1"><span class="nav-number">2.2.</span> <span class="nav-text">过程分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点分析-1"><span class="nav-number">2.3.</span> <span class="nav-text">优缺点分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#典型的算法"><span class="nav-number">2.3.3.</span> <span class="nav-text">典型的算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
